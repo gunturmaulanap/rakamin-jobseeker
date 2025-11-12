@@ -25,7 +25,7 @@ import { supabase } from "@/lib/supabase";
 const registerSchema = z.object({
   email: z
     .string()
-    .min(1, "Email wajib diisi")
+    .min(1, "Alamat email tidak boleh kosong")
     .email("Format email tidak valid"),
 });
 
@@ -39,7 +39,7 @@ export default function RegisterPageClient() {
 
   const form = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
-    mode: "onBlur",
+    mode: "onSubmit",
   });
 
   const onSubmit = async (data: RegisterFormData) => {
@@ -48,11 +48,12 @@ export default function RegisterPageClient() {
     setSuccess("");
 
     try {
-
       const { error: authError } = await supabase.auth.signInWithOtp({
         email: data.email,
         options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback?email=${encodeURIComponent(data.email)}`,
+          emailRedirectTo: `${
+            window.location.origin
+          }/auth/callback?email=${encodeURIComponent(data.email)}`,
           data: {
             is_registration: true,
             registration_timestamp: new Date().toISOString(),
@@ -73,9 +74,10 @@ export default function RegisterPageClient() {
       localStorage.setItem("registration_flow", "magic_link");
 
       setTimeout(() => {
-        router.push(`/auth/verify-email?email=${encodeURIComponent(data.email)}`);
+        router.push(
+          `/auth/verify-email?email=${encodeURIComponent(data.email)}`
+        );
       }, 2000);
-
     } catch (err: any) {
       console.error("❌ Registration error:", err);
       setError(err.message || "Terjadi kesalahan saat registrasi");
@@ -91,7 +93,7 @@ export default function RegisterPageClient() {
         <div className="text-left -mb-8 ">
           <div className="flex items-center">
             <img
-              src="/logo/rakamin-logo.png"
+              src="/logo/logo-rakamin.svg"
               alt="Rakamin Logo"
               className="w-50 h-40"
             />
@@ -143,7 +145,7 @@ export default function RegisterPageClient() {
               <FormField
                 control={form.control}
                 name="email"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem>
                     <FormLabel className="flex items-center text-sm font-medium text-gray-700 mb-2">
                       Alamat Email <span className="text-red-500">*</span>
@@ -155,7 +157,7 @@ export default function RegisterPageClient() {
                         </div>
                         <Input
                           type="email"
-                          placeholder="nama@example.com"
+                          placeholder="Alamat email"
                           className="pl-10 h-12 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#01959F] focus:border-[#01959F]"
                           {...field}
                           disabled={isLoading}

@@ -25,9 +25,9 @@ import { supabase } from "@/lib/supabase";
 const loginSchema = z.object({
   email: z
     .string()
-    .min(1, "Email wajib diisi")
+    .min(1, "Alamat email tidak boleh kosong")
     .email("Format email tidak valid"),
-  password: z.string().min(1, "Password wajib diisi"),
+  password: z.string().min(1, "Kata sandi tidak boleh kosong"),
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
@@ -99,7 +99,7 @@ export default function PasswordLoginPageClient() {
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
-    mode: "onBlur",
+    mode: "onSubmit",
   });
 
   const onSubmit = async (data: LoginFormData) => {
@@ -199,7 +199,7 @@ export default function PasswordLoginPageClient() {
         <div className="text-left -mb-8 ">
           <div className="flex items-center">
             <img
-              src="/logo/rakamin-logo.png"
+              src="/logo/logo-rakamin.svg"
               alt="Rakamin Logo"
               className="w-50 h-40"
             />
@@ -256,7 +256,7 @@ export default function PasswordLoginPageClient() {
                         </div>
                         <Input
                           type="email"
-                          placeholder="nama@email.com"
+                          placeholder="Alamat email"
                           className="pl-10 h-12 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#01959F] focus:border-[#01959F]"
                           {...field}
                           disabled={isLoading}
@@ -284,7 +284,7 @@ export default function PasswordLoginPageClient() {
                         </div>
                         <Input
                           type={showPassword ? "text" : "password"}
-                          placeholder="••••••••"
+                          placeholder="Kata sandi"
                           className="pl-10 pr-10 h-12 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#01959F] focus:border-[#01959F]"
                           {...field}
                           disabled={isLoading}

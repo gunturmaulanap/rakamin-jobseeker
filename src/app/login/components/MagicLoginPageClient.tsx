@@ -25,7 +25,7 @@ import { Mail, AlertCircle, CheckCircle } from "lucide-react";
 const magicLoginSchema = z.object({
   email: z
     .string()
-    .min(1, "Email wajib diisi")
+    .min(1, "Alamat email tidak boleh kosong")
     .email("Format email tidak valid"),
 });
 
@@ -41,7 +41,7 @@ export default function MagicLoginPageClient() {
 
   const form = useForm<MagicLoginFormData>({
     resolver: zodResolver(magicLoginSchema),
-    mode: "onBlur",
+    mode: "onSubmit",
   });
 
   useEffect(() => {
@@ -91,12 +91,13 @@ export default function MagicLoginPageClient() {
     setSuccess("");
 
     try {
-
       const { error: authError } = await supabase.auth.signInWithOtp({
         email: data.email,
         options: {
           shouldCreateUser: false, // Only login existing users
-          emailRedirectTo: `${window.location.origin}/auth/callback?email=${encodeURIComponent(data.email)}`,
+          emailRedirectTo: `${
+            window.location.origin
+          }/auth/callback?email=${encodeURIComponent(data.email)}`,
           data: {
             is_login_attempt: true,
             login_timestamp: new Date().toISOString(),
@@ -108,11 +109,15 @@ export default function MagicLoginPageClient() {
         let errorMessage = authError.message;
 
         // Provide user-friendly error messages
-        if (authError.message?.includes("User not found") ||
-            authError.message?.includes("Signups not allowed for otp")) {
-          errorMessage = 'Email ini belum terdaftar. <a href="/register" class="text-blue-600 hover:underline font-semibold">Daftar</a> sekarang.';
+        if (
+          authError.message?.includes("User not found") ||
+          authError.message?.includes("Signups not allowed for otp")
+        ) {
+          errorMessage =
+            'Email ini belum terdaftar sebagai akun di Rakamin Academy. <a href="/register" class="text-red-600 hover:underline font-semibold">Daftar</a>.';
         } else if (authError.message?.includes("rate limit")) {
-          errorMessage = "Terlalu banyak percobaan. Silakan tunggu beberapa saat.";
+          errorMessage =
+            "Terlalu banyak percobaan. Silakan tunggu beberapa saat.";
         }
 
         setError(errorMessage);
@@ -126,9 +131,10 @@ export default function MagicLoginPageClient() {
       localStorage.setItem("login_flow", "magic_link");
 
       setTimeout(() => {
-        router.push(`/auth/verify-email?email=${encodeURIComponent(data.email)}`);
+        router.push(
+          `/auth/verify-email?email=${encodeURIComponent(data.email)}`
+        );
       }, 2000);
-
     } catch (err: any) {
       console.error("❌ Login error:", err);
       setError(err.message || "Terjadi kesalahan saat login");
@@ -144,7 +150,7 @@ export default function MagicLoginPageClient() {
         <div className="text-left -mb-8 ">
           <div className="flex items-center">
             <img
-              src="/logo/rakamin-logo.png"
+              src="/logo/logo-rakamin.svg"
               alt="Rakamin Logo"
               className="w-50 h-40"
             />
@@ -205,7 +211,7 @@ export default function MagicLoginPageClient() {
                         </div>
                         <Input
                           type="email"
-                          placeholder="johndoe@example.com"
+                          placeholder="Alamat email"
                           className="pl-10 h-12"
                           {...field}
                           disabled={isLoading}

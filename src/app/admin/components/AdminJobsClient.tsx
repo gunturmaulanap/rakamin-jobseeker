@@ -180,7 +180,7 @@ export default function AdminJobsClient() {
                     <CardContent className="flex flex-col items-center justify-center py-16">
                       <div className="text-center">
                         <Image
-                          src="/empty/no-jobs.png"
+                          src="/empty/no-jobs.svg"
                           alt="No jobs available"
                           width={192}
                           height={192}
@@ -259,7 +259,7 @@ export default function AdminJobsClient() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    className="h-9 border-red-200 text-red-600 hover:bg-red-50"
+                                    className="h-9 border-red-200 text-red-600 hover:bg-red-50 cursor-pointer"
                                     onClick={() =>
                                       handleToggleJobStatus(job.id, job.status)
                                     }
@@ -271,7 +271,7 @@ export default function AdminJobsClient() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    className="h-9 border-green-200 text-green-600 hover:bg-green-50"
+                                    className="h-9 border-green-200 text-green-600 hover:bg-green-50 cursor-pointer"
                                     onClick={() =>
                                       handleToggleJobStatus(job.id, job.status)
                                     }
@@ -283,7 +283,7 @@ export default function AdminJobsClient() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    className="h-9 border-blue-200 text-blue-600 hover:bg-blue-50"
+                                    className="h-9 border-blue-200 text-blue-600 hover:bg-blue-50 cursor-pointer"
                                     onClick={() => setEditingJob(job)}
                                   >
                                     Continue Draft
@@ -293,7 +293,7 @@ export default function AdminJobsClient() {
                                   <Button
                                     variant="ghost"
                                     size="sm"
-                                    className="h-9 bg-[#01959F] text-white rounded-xl px-4 shadow-sm hover:bg-[#017B7F] "
+                                    className="h-9 bg-[#01959F] text-white rounded-xl px-4  hover:bg-[#046265] hover:text-white cursor-pointer"
                                   >
                                     Manage Job
                                   </Button>
@@ -312,7 +312,7 @@ export default function AdminJobsClient() {
               <div
                 className="bg-cover bg-center bg-no-repeat rounded-xl p-8 mb-6 relative overflow-hidden text-white"
                 style={{
-                  backgroundImage: "url('/background/background.jpg')",
+                  backgroundImage: "url('/background/create-button.jpg')",
                 }}
               >
                 {/* Dark Overlay */}
@@ -329,7 +329,7 @@ export default function AdminJobsClient() {
                   </div>
                   <div className="flex justify-center">
                     <Button
-                      className="bg-[#01959F] hover:bg-[#017B7F] text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 w-full"
+                      className="bg-[#01959F] hover:bg-[#046265] text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 w-full cursor-pointer"
                       onClick={openCreateModal}
                     >
                       Create a new jobs

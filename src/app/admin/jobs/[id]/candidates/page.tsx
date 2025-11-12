@@ -147,7 +147,7 @@ export default function CandidateManagementPage() {
             <CardContent className="flex flex-col items-center justify-center py-12 rounded-lg border border-gray-200 min-h-screen bg-white">
               <div className="text-center">
                 <Image
-                  src="/empty/no-candidates.png"
+                  src="/empty/no-candidates.svg"
                   alt="No candidates available"
                   width={800}
                   height={800}

@@ -78,10 +78,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                     e.stopPropagation();
                     setIsDropdownOpen(!isDropdownOpen);
                   }}
-                  className="h-8 w-8 p-0 rounded-full overflow-hidden cursor-pointer"
+                  className="h-11 w-8 p-0 rounded-full overflow-hidden cursor-pointer"
                 >
                   <Image
-                    src="/profile/profile-icon.png"
+                    src="/profile/profile-icon-admin.svg"
                     priority
                     width={100}
                     height={100}

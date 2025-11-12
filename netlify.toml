@@ -1,0 +1,40 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+# Handle Next.js routing for static export
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/candidate/*"
+  to = "/candidate/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/auth/*"
+  to = "/auth/index.html"
+  status = 200
+
+# Fallback for all other routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for Next.js static files
+[[headers]]
+  for = "/_next/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

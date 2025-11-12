@@ -231,7 +231,7 @@ export default function VerifyEmailPage() {
         {/* Illustration */}
         <div className="flex justify-center px-4">
           <Image
-            src="/empty/pana.png"
+            src="/empty/verify-email.svg"
             alt="Email verification illustration"
             width={192}
             height={192}

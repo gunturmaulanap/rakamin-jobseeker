@@ -42,9 +42,9 @@ export default function CandidateLayout({ children }: { children: ReactNode }) {
   // Clean up any browser extension attributes that cause hydration issues
   useEffect(() => {
     const cleanupAttributes = () => {
-      const elements = document.querySelectorAll('[bis_skin_checked]');
-      elements.forEach(el => {
-        (el as HTMLElement).removeAttribute('bis_skin_checked');
+      const elements = document.querySelectorAll("[bis_skin_checked]");
+      elements.forEach((el) => {
+        (el as HTMLElement).removeAttribute("bis_skin_checked");
       });
     };
 
@@ -73,7 +73,7 @@ export default function CandidateLayout({ children }: { children: ReactNode }) {
                   className="h-8 w-8 p-0 rounded-full overflow-hidden cursor-pointer"
                 >
                   <Image
-                    src="/profile/avatar.png"
+                    src="/profile/profile-icon-candidate.svg"
                     priority
                     width={100}
                     height={100}
