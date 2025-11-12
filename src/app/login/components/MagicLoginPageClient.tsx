@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useAuthStore } from "@/stores";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -147,12 +148,14 @@ export default function MagicLoginPageClient() {
     <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 -m-8">
       <div className="max-w-xl w-full">
         {/* Logo only (keep outside card) */}
-        <div className="text-left -mb-8 ">
-          <div className="flex items-center">
-            <img
+        <div className="text-left -mb-8 ml-8 sm:ml-0 md:ml-0 lg:ml-0">
+          <div className="flex items-center justify-start">
+            <Image
               src="/logo/logo-rakamin.svg"
               alt="Rakamin Logo"
-              className="w-50 h-40"
+              className="w-50 h-42 object-contain"
+              width={160}
+              height={128}
             />
           </div>
         </div>

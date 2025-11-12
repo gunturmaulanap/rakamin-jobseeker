@@ -9,14 +9,6 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
-  // Output configuration for Netlify Functions
-  output: process.env.NETLIFY === 'true' ? 'export' : undefined,
-  // Disable image optimization for Netlify
-  images: {
-    unoptimized: process.env.NETLIFY === 'true',
-  },
-  // Ensure proper trailing slashes
-  trailingSlash: process.env.NETLIFY === 'true' ? true : false,
 };
 
 export default nextConfig;
