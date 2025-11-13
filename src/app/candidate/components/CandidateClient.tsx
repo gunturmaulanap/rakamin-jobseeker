@@ -246,7 +246,7 @@ export default function CandidateClient() {
                           style={{ width: "auto", height: "auto" }}
                         />
                         <p className="font-medium text-sm text-gray-500">
-                          Remote
+                          {job.department}
                         </p>
                       </div>
 
