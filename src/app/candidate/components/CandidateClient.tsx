@@ -231,12 +231,12 @@ export default function CandidateClient() {
                           {job.title}
                         </h1>
                         <p className="font-medium text-gray-500 text-sm line-clamp-1">
-                          {job.department}
+                          Rakamin
                         </p>
                       </div>
                     </div>
                     <div className="border-t-2 border-dotted border-gray-200 pt-3 w-full"></div>
-                    <div className="flex items-center gap-4 mt-3">
+                    <div className="mt-3 space-y-2">
                       <div className="flex items-center gap-1">
                         <Image
                           src="/icon/location.svg"
@@ -246,7 +246,7 @@ export default function CandidateClient() {
                           style={{ width: "auto", height: "auto" }}
                         />
                         <p className="font-medium text-sm text-gray-500">
-                          {job.department}
+                          Jakarta, Indonesia
                         </p>
                       </div>
 
@@ -293,7 +293,7 @@ export default function CandidateClient() {
                           {selectedJob.title}
                         </h1>
                         <p className="font-medium text-lg text-gray-600">
-                          {selectedJob.department || "Department"}
+                          Rakamin
                         </p>
                       </div>
                     </div>
@@ -414,14 +414,12 @@ export default function CandidateClient() {
                   </div>
                   <div className="flex flex-col min-w-0 flex-1">
                     <span className="bg-green-100 text-green-700 text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2 w-fit">
-                      Full-Time
+                      {selectedJob.department}
                     </span>
                     <h1 className="font-bold text-xl text-gray-800 line-clamp-2">
                       {selectedJob.title}
                     </h1>
-                    <p className="font-medium text-gray-600">
-                      {selectedJob.department || "Department"}
-                    </p>
+                    <p className="font-medium text-gray-600">Rakamin</p>
                   </div>
                 </div>
                 {appliedJobs.has(selectedJob.id) ? (
